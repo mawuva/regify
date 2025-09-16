@@ -1,5 +1,65 @@
 """
-Core module for the Regify package.
+Core Registry Module for Regify Package.
+
+This module contains the fundamental Registry class, which is the heart of the
+Regify package. The Registry provides a thread-safe, extensible container for
+storing and managing objects, functions, classes, or any Python objects by name.
+
+The Registry class is designed to be:
+    - Thread-safe: Uses RLock for concurrent access protection
+    - Extensible: Supports both decorator and explicit registration patterns
+    - Flexible: Can store any type of Python object
+    - Easy to use: Provides intuitive API for common operations
+
+Key Features:
+    - Thread-safe operations with automatic locking
+    - Decorator-based registration for clean code
+    - Explicit registration for dynamic scenarios
+    - Duplicate key prevention with clear error messages
+    - Complete CRUD operations (Create, Read, Update, Delete)
+    - Dictionary-like interface with __contains__ and __len__
+
+Registration Patterns:
+    1. Decorator pattern (recommended for static registration):
+       >>> @registry.register("my_plugin")
+       >>> def my_function():
+       ...     pass
+
+    2. Decorator with auto-naming:
+       >>> @registry.register()
+       >>> def another_function():
+       ...     pass
+
+    3. Explicit registration:
+       >>> registry.add("dynamic_plugin", some_object)
+
+Example Usage:
+    >>> from regify import Registry
+    >>>
+    >>> # Create a registry
+    >>> registry = Registry("my_app")
+    >>>
+    >>> # Register functions using decorators
+    >>> @registry.register("processor")
+    >>> def process_data(data):
+    ...     return data.upper()
+    >>>
+    >>> # Register classes
+    >>> @registry.register("validator")
+    >>> class DataValidator:
+    ...     def validate(self, data):
+    ...         return len(data) > 0
+    >>>
+    >>> # Access registered objects
+    >>> processor = registry.get("processor")
+    >>> validator = registry.get("validator")
+    >>>
+    >>> # Check what's registered
+    >>> print(registry.keys())
+    >>> print(len(registry))
+
+This module forms the foundation for plugin systems, dependency injection,
+service locators, and any pattern requiring centralized object management.
 """
 
 from threading import RLock
