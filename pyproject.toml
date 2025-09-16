@@ -13,6 +13,7 @@ dependencies = [
 [tool.poetry]
 packages = [{include = "regify", from = "src"}]
 
+exclude = ["examples*", "tests*"]
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.4.2"
