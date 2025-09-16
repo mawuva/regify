@@ -1,6 +1,6 @@
 [project]
 name = "regify"
-version = "0.1.1"
+version = "0.1.2"
 description = "Thread-safe registry framework for Python objects, plugins, strategies, handlers, or any reusable objects."
 authors = [
     {name = "Ephraim Seddor",email = "seddorephraim7@gmail.com"}
@@ -29,7 +29,7 @@ types-pyyaml = "^6.0.12.20250915"
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "0.1.1"
+version = "0.1.2"
 tag_format = "v$version"
 update_changelog_on_bump = true
 version_files = [
