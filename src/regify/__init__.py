@@ -8,5 +8,5 @@ from .core import Registry
 from .decorators import register
 from .manager import RegistryManager
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __all__ = ["Registry", "register", "RegistryManager"]
